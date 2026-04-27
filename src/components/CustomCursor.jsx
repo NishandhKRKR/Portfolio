@@ -14,12 +14,12 @@ const CustomCursor = () => {
     };
 
     const handleMouseOver = (e) => {
-      if (
-        e.target.tagName.toLowerCase() === 'button' ||
-        e.target.tagName.toLowerCase() === 'a' ||
-        e.target.closest('button') ||
-        e.target.closest('a')
-      ) {
+      const tag = e.target.tagName.toLowerCase();
+      const isClickableOrText = [
+        'button', 'a', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span', 'li', 'strong', 'em'
+      ].includes(tag) || e.target.closest('button') || e.target.closest('a');
+      
+      if (isClickableOrText) {
         setIsHovering(true);
       } else {
         setIsHovering(false);

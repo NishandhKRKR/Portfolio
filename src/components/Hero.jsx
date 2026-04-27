@@ -47,10 +47,18 @@ const Hero = () => {
               </Link>
               <Link 
                 to="/contact" 
-                className="w-full sm:w-auto px-8 py-3.5 rounded-full glass font-medium hover:bg-white/20 dark:hover:bg-white/5 transition-all flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-6 py-3.5 rounded-full glass font-medium hover:bg-white/20 dark:hover:bg-white/5 transition-all flex items-center justify-center gap-2"
               >
                 Hire Me
               </Link>
+              <a 
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto px-6 py-3.5 rounded-full glass border border-foreground/20 font-medium hover:bg-foreground/5 transition-all flex items-center justify-center gap-2"
+              >
+                Resume
+              </a>
             </div>
           </motion.div>
 
@@ -60,17 +68,35 @@ const Hero = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
           >
-            <div className="w-full h-full p-8 relative">
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 rounded-full blur-3xl animate-pulse"></div>
-              <div className="w-full h-full glass rounded-[2rem] border border-foreground/10 shadow-2xl overflow-hidden relative z-10 flex items-center justify-center bg-background/50 drop-shadow-2xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=1000&auto=format&fit=crop" 
-                  alt="3D Frontend Developer Avatar" 
-                  className="w-full h-full object-cover opacity-90 mix-blend-luminosity hover:mix-blend-normal transition-all duration-700"
+            <div className="w-full h-full p-8 relative flex items-center justify-center">
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 rounded-full blur-[80px] animate-pulse"></div>
+              
+              <div className="relative z-10 w-full max-w-sm">
+                <motion.div 
+                  className="rounded-[3rem] p-8 glass bg-background/40 backdrop-blur-xl border border-foreground/10 shadow-2xl relative overflow-hidden"
+                  animate={{ y: [0, -15, 0] }}
+                  transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+                >
+                  <img 
+                    src="/logo.png" 
+                    alt="StackNova Technology Logo" 
+                    className="w-full h-auto object-contain drop-shadow-2xl opacity-100"
+                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/5 rounded-[3rem] pointer-events-none"></div>
+                </motion.div>
+                
+                {/* Orbital decorative elements */}
+                <motion.div 
+                  className="absolute -top-6 -right-6 w-16 h-16 rounded-full bg-gradient-to-br from-primary to-secondary blur-xl opacity-60"
+                  animate={{ scale: [1, 1.2, 1], opacity: [0.6, 0.8, 0.6] }}
+                  transition={{ repeat: Infinity, duration: 3 }}
                 />
-                <div className="absolute inset-x-0 bottom-8 text-center pointer-events-none">
-                  <span className="font-bold text-2xl tracking-tight text-white bg-black/50 px-4 py-2 rounded-xl backdrop-blur-md">Frontend Dev.</span>
-                </div>
+                <motion.div 
+                  className="absolute -bottom-10 -left-10 w-24 h-24 rounded-full bg-gradient-to-tr from-accent to-primary blur-2xl opacity-50"
+                  animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0.9, 0.5] }}
+                  transition={{ repeat: Infinity, duration: 5 }}
+                />
               </div>
             </div>
           </motion.div>

@@ -109,13 +109,13 @@ const Contact = () => {
               <div>
                 <span className="block font-medium mb-4">Follow StackNova</span>
                 <div className="flex gap-4">
-                  <a href="#" className="w-10 h-10 rounded-full glass hover:bg-primary/20 flex items-center justify-center transition-colors">
+                  <a href="https://github.com/NishandhKRKR" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full glass hover:bg-primary/20 flex items-center justify-center transition-colors">
                     <GithubIcon size={18} />
                   </a>
-                  <a href="#" className="w-10 h-10 rounded-full glass hover:bg-primary/20 flex items-center justify-center transition-colors">
+                  <a href="https://www.linkedin.com/in/nishandh-kr-3737a8248/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full glass hover:bg-primary/20 flex items-center justify-center transition-colors">
                     <LinkedinIcon size={18} />
                   </a>
-                  <a href="#" className="w-10 h-10 rounded-full glass hover:bg-primary/20 flex items-center justify-center transition-colors">
+                  <a href="https://www.instagram.com/stacknova.techno/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full glass hover:bg-primary/20 flex items-center justify-center transition-colors">
                     <InstagramIcon size={18} />
                   </a>
                   <a href="https://wa.me/919345364014" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full glass hover:bg-primary/20 flex items-center justify-center transition-colors">

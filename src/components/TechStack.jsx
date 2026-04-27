@@ -14,14 +14,14 @@ const ExpressSvg = ({ size }) => <svg width={size} height={size} viewBox="0 0 24
 
 const techStack = [
   { name: 'HTML5', icon: <HtmlIcon size={50} />, brandColor: '#E34F26' },
-  { name: 'CSS3', icon: <CssIcon size={50} />, brandColor: '#1572B6' },
-  { name: 'JavaScript', icon: <svg width={50} height={50} viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>, brandColor: '#F7DF1E' }, // Quick JS text workaround
+  { name: 'CSS3', icon: <img src="/css.png" alt="CSS3" className="w-[50px] h-[50px] object-contain" onError={(e) => e.currentTarget.style.display = 'none'} />, brandColor: '#1572B6' },
+  { name: 'JavaScript', icon: <img src="/js.png" alt="JavaScript" className="w-[50px] h-[50px] object-contain" onError={(e) => e.currentTarget.style.display = 'none'} />, brandColor: '#F7DF1E' },
   { name: 'React.js', icon: <ReactSvg size={50} />, brandColor: '#61DAFB' },
   { name: 'Tailwind CSS', icon: <TailwindSvg size={50} />, brandColor: '#06B6D4' },
   { name: 'Node.js', icon: <NodeSvg size={50} />, brandColor: '#339933' },
-  { name: 'Express.js', icon: <ExpressSvg size={50} />, brandColor: '#FFFFFF' }, // Assuming white glow looks best on dark
+  { name: 'Express.js', icon: <img src="/express.png" alt="Express" className="w-[50px] h-[50px] object-contain bg-white/20 p-1 rounded-lg" onError={(e) => e.currentTarget.style.display = 'none'} />, brandColor: '#FFFFFF' },
   { name: 'MongoDB', icon: <MongoSvg size={50} />, brandColor: '#47A248' },
-  { name: 'MySQL', icon: <MySqlSvg size={50} />, brandColor: '#4479A1' },
+  { name: 'MySQL', icon: <img src="/mysql.png" alt="MySQL" className="w-[50px] h-[50px] object-contain" onError={(e) => e.currentTarget.style.display = 'none'} />, brandColor: '#4479A1' },
 ];
 
 const containerVariants = {

@@ -26,18 +26,18 @@ const About = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <div className="relative rounded-3xl overflow-hidden glass p-2 border-primary/20 aspect-[4/5] shadow-2xl bg-background/30">
-              <img 
-                src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1000&auto=format&fit=crop" 
-                alt="3D Frontend Boy Character" 
-                className="w-full h-full object-cover rounded-2xl opacity-90 hover:opacity-100 transition-all duration-500 mix-blend-luminosity hover:mix-blend-normal"
-              />
-              <div className="absolute bottom-6 right-6 glass p-4 rounded-2xl flex items-center gap-3 animate-bounce bg-background/80 backdrop-blur-md">
-                <span className="text-3xl">👋</span>
-                <div className="text-sm font-medium leading-tight">
-                  <span className="text-primary block">Available for</span>
-                  Work
-                </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="col-span-2 glass rounded-3xl p-8 flex flex-col items-center justify-center text-center border-primary/20 bg-primary/5">
+                <span className="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-br from-primary to-accent mb-2">1+</span>
+                <span className="text-lg font-medium text-foreground/80">Years of Built<br />Experience</span>
+              </div>
+              <div className="glass rounded-3xl p-6 flex flex-col items-center justify-center text-center">
+                <span className="text-3xl font-bold text-foreground mb-1">10+</span>
+                <span className="text-sm font-medium text-foreground/60">Projects</span>
+              </div>
+              <div className="glass rounded-3xl p-6 flex flex-col items-center justify-center text-center">
+                <span className="text-3xl font-bold text-foreground mb-1">100%</span>
+                <span className="text-sm font-medium text-foreground/60">Commitment</span>
               </div>
             </div>
           </motion.div>
@@ -53,7 +53,7 @@ const About = () => {
               Hi, I'm the founder of <span className="text-primary">StackNova Technology</span>.
             </h3>
             <p className="text-foreground/70 mb-8 leading-relaxed text-lg">
-              We specialize in creating interactive, scalable, and responsive web applications. With a strong eye for design and a deep understanding of modern web technologies, we bridge the gap between design and an engaging user experience, utilizing the best in 3D and Framer Motion.
+              We specialize in creating interactive, scalable, and responsive web applications. With over a year of dedicated hands-on experience and a strong eye for design, we bridge the gap between aesthetics and an engaging user experience, utilizing the best in frontend technologies.
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">

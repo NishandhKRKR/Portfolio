@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
-import { Moon, Sun, Menu, X } from 'lucide-react';
+import { Moon, Sun, Menu, X, Download } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -14,6 +14,7 @@ const Navbar = () => {
     { name: 'Home', href: '/' },
     { name: 'Projects', href: '/projects' },
     { name: 'Services', href: '/services' },
+    { name: 'Tech Stack', href: '/tech' },
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' },
   ];
@@ -35,12 +36,15 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <Link to="/" className="text-xl md:text-2xl font-bold tracking-tighter">
-          StackNova<span className="text-primary"> Tech</span>
+        <Link to="/" className="flex items-center gap-2">
+          <img src="/logo.png" alt="StackNova Technology" className="h-10 w-auto object-contain" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+          <span className="text-xl md:text-2xl font-bold tracking-tighter hidden sm:block">
+            StackNova<span className="text-primary"> Tech</span>
+          </span>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-8">
           <ul className="flex items-center gap-6">
             {navLinks.map((link) => (
               <li key={link.name}>
@@ -64,6 +68,15 @@ const Navbar = () => {
             >
               {isDark ? <Sun size={20} /> : <Moon size={20} />}
             </button>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+              title="View Resume"
+            >
+              <Download size={20} className="text-foreground/70 hover:text-primary" />
+            </a>
             <Link
               to="/contact"
               className="px-5 py-2.5 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-all shadow-[0_0_15px_rgba(79,70,229,0.5)] transform hover:scale-105"
@@ -74,7 +87,15 @@ const Navbar = () => {
         </nav>
 
         {/* Mobile Toggle */}
-        <div className="flex items-center gap-4 md:hidden">
+        <div className="flex items-center gap-2 lg:hidden">
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+          >
+            <Download size={20} />
+          </a>
           <button
             onClick={toggleTheme}
             className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
@@ -97,7 +118,7 @@ const Navbar = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 right-0 bg-background/95 backdrop-blur-md border-b border-foreground/10 shadow-lg md:hidden"
+            className="absolute top-full left-0 right-0 bg-background/95 backdrop-blur-md border-b border-foreground/10 shadow-lg lg:hidden"
           >
             <ul className="flex flex-col px-6 py-4 gap-4">
               {navLinks.map((link) => (
