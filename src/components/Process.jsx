@@ -62,7 +62,7 @@ const Process = () => {
                   transition={{ duration: 0.6, delay: 0.2 }}
                   className={`flex flex-col md:flex-row items-start md:items-center relative ${isEven ? 'md:flex-row-reverse' : ''}`}
                 >
-                  <div className={`md:w-1/2 ${isEven ? 'md:pl-12' : 'md:pr-12'} mb-8 md:mb-0 w-full ml-16 md:ml-0`}>
+                  <div className={`md:w-1/2 ${isEven ? 'md:pl-12' : 'md:pr-12'} mb-8 md:mb-0 ml-16 md:ml-0`}>
                     <div className="glass p-8 rounded-3xl hover:bg-white/5 dark:hover:bg-black/20 transition-colors shadow-lg">
                       <span className="text-5xl font-extrabold text-foreground/5 absolute -top-4 -right-4">{`0${index + 1}`}</span>
                       <h3 className="text-2xl font-bold mb-3">{step.title}</h3>

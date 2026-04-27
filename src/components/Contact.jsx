@@ -13,36 +13,45 @@ const Contact = () => {
     phone: '',
     message: ''
   });
+  const [status, setStatus] = useState('idle'); // idle, sending, success, error
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Construct messages
-    const text = `Name: ${formData.name}%0AEmail: ${formData.email}%0APhone: ${formData.phone || 'N/A'}%0AMessage: ${formData.message}`;
-    
-    // WhatsApp URL
-    const waNumber = '919345364014';
-    const waUrl = `https://wa.me/${waNumber}?text=${text}`;
-    
-    // Email URL
-    const emailAddress = 'nishandhkr2000@gmail.com';
-    const emailSubject = `StackNova Technology Contact from ${formData.name}`;
-    const mailtoUrl = `mailto:${emailAddress}?subject=${encodeURIComponent(emailSubject)}&body=${text}`;
-    
-    // Open WhatsApp in new tab
-    window.open(waUrl, '_blank');
-    
-    // Open Email client in current tab
-    setTimeout(() => {
-      window.location.href = mailtoUrl;
-    }, 500);
+    setStatus('sending');
 
-    // Reset
-    setFormData({ name: '', email: '', phone: '', message: '' });
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/stacknovatechno@gmail.com", {
+        method: "POST",
+        headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone || "N/A",
+            message: formData.message,
+            _subject: `StackNova Technology Contact from ${formData.name}`,
+            _captcha: "false"
+        })
+      });
+
+      if (response.ok) {
+          setStatus('success');
+          setFormData({ name: '', email: '', phone: '', message: '' });
+          setTimeout(() => setStatus('idle'), 5000);
+      } else {
+          setStatus('error');
+          setTimeout(() => setStatus('idle'), 5000);
+      }
+    } catch (error) {
+        setStatus('error');
+        setTimeout(() => setStatus('idle'), 5000);
+    }
   };
 
   return (
@@ -81,7 +90,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <span className="block font-medium mb-1">Email</span>
-                    <a href="mailto:nishandhkr2000@gmail.com" className="text-sm text-foreground/70 hover:text-primary transition-colors">nishandhkr2000@gmail.com</a>
+                    <a href="mailto:stacknovatechno@gmail.com" className="text-sm text-foreground/70 hover:text-primary transition-colors">stacknovatechno@gmail.com</a>
                   </div>
                 </div>
                 
@@ -134,7 +143,8 @@ const Contact = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <form onSubmit={handleSubmit} className="glass p-8 md:p-12 rounded-3xl">
+            <form onSubmit={handleSubmit} className="glass p-8 md:p-12 rounded-3xl relative">
+              
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-foreground/80 mb-2">Name</label>
@@ -145,7 +155,8 @@ const Contact = () => {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-background/50 border border-foreground/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-foreground/30"
+                    disabled={status === 'sending'}
+                    className="w-full px-4 py-3 rounded-xl bg-background/50 border border-foreground/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-foreground/30 disabled:opacity-50"
                     placeholder="John Doe"
                   />
                 </div>
@@ -158,7 +169,8 @@ const Contact = () => {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-background/50 border border-foreground/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-foreground/30"
+                    disabled={status === 'sending'}
+                    className="w-full px-4 py-3 rounded-xl bg-background/50 border border-foreground/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-foreground/30 disabled:opacity-50"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -172,7 +184,8 @@ const Contact = () => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl bg-background/50 border border-foreground/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-foreground/30"
+                  disabled={status === 'sending'}
+                  className="w-full px-4 py-3 rounded-xl bg-background/50 border border-foreground/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-foreground/30 disabled:opacity-50"
                   placeholder="+91 00000 00000"
                 />
               </div>
@@ -186,18 +199,22 @@ const Contact = () => {
                   rows="5"
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl bg-background/50 border border-foreground/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-foreground/30 resize-none"
+                  disabled={status === 'sending'}
+                  className="w-full px-4 py-3 rounded-xl bg-background/50 border border-foreground/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-foreground/30 resize-none disabled:opacity-50"
                   placeholder="Tell us about your project..."
                 ></textarea>
               </div>
               
               <button 
                 type="submit"
-                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-primary text-white font-medium hover:bg-primary/90 transition-all shadow-[0_0_20px_rgba(79,70,229,0.4)] flex items-center justify-center gap-2 group"
+                disabled={status === 'sending'}
+                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-primary text-white font-medium hover:bg-primary/90 transition-all shadow-[0_0_20px_rgba(79,70,229,0.4)] flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                Send Message
-                <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                {status === 'sending' ? 'Sending...' : status === 'success' ? 'Message Sent!' : 'Send Message'}
+                {status !== 'sending' && status !== 'success' && <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}
               </button>
+              
+              {status === 'error' && <p className="text-red-500 font-medium text-sm mt-4 text-center sm:text-left">Failed to send message. Please try again.</p>}
             </form>
           </motion.div>
         </div>
