@@ -60,20 +60,20 @@ const Process = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.6, delay: 0.2 }}
-                  className={`flex flex-col md:flex-row items-start md:items-center relative ${isEven ? 'md:flex-row-reverse' : ''}`}
+                  className={`flex flex-col md:flex-row items-center relative ${isEven ? 'md:flex-row-reverse' : ''}`}
                 >
-                  <div className={`md:w-1/2 ${isEven ? 'md:pl-12' : 'md:pr-12'} mb-8 md:mb-0 ml-16 md:ml-0`}>
-                    <div className="glass p-8 rounded-3xl hover:bg-white/5 dark:hover:bg-black/20 transition-colors shadow-lg">
-                      <span className="text-5xl font-extrabold text-foreground/5 absolute -top-4 -right-4">{`0${index + 1}`}</span>
-                      <h3 className="text-2xl font-bold mb-3">{step.title}</h3>
-                      <p className="text-foreground/70">{step.description}</p>
-                    </div>
-                  </div>
-                  
-                  {/* Timeline Node */}
-                  <div className="absolute left-0 md:left-1/2 -translate-x-1/2 w-14 h-14 rounded-full glass flex items-center justify-center z-10 border-4 border-background shadow-xl">
+                  {/* Timeline Node - Top centered on mobile, Absolute centered on desktop */}
+                  <div className="md:absolute md:left-1/2 md:-translate-x-1/2 mb-6 md:mb-0 w-14 h-14 rounded-full glass flex items-center justify-center z-10 border-4 border-background shadow-xl">
                     <div className={`w-10 h-10 rounded-full ${step.color} text-white flex items-center justify-center shadow-[0_0_15px_currentColor]`}>
                       {step.icon}
+                    </div>
+                  </div>
+
+                  <div className={`w-full md:w-1/2 ${isEven ? 'md:pl-12' : 'md:pr-12'}`}>
+                    <div className="glass p-8 rounded-3xl hover:bg-white/5 dark:hover:bg-black/20 transition-colors shadow-lg text-center md:text-left relative overflow-hidden">
+                      <span className="text-7xl font-extrabold text-foreground/5 absolute -top-2 -right-2 pointer-events-none">{`0${index + 1}`}</span>
+                      <h3 className="text-2xl font-bold mb-3 relative z-10">{step.title}</h3>
+                      <p className="text-foreground/70 relative z-10">{step.description}</p>
                     </div>
                   </div>
                 </motion.div>

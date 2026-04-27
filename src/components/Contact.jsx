@@ -143,79 +143,96 @@ const Contact = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <form onSubmit={handleSubmit} className="glass p-8 md:p-12 rounded-3xl relative">
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-foreground/80 mb-2">Name</label>
-                  <input 
-                    type="text" 
-                    id="name"
-                    name="name"
-                    required
-                    value={formData.name}
-                    onChange={handleChange}
-                    disabled={status === 'sending'}
-                    className="w-full px-4 py-3 rounded-xl bg-background/50 border border-foreground/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-foreground/30 disabled:opacity-50"
-                    placeholder="John Doe"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-foreground/80 mb-2">Email</label>
-                  <input 
-                    type="email" 
-                    id="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    disabled={status === 'sending'}
-                    className="w-full px-4 py-3 rounded-xl bg-background/50 border border-foreground/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-foreground/30 disabled:opacity-50"
-                    placeholder="john@example.com"
-                  />
-                </div>
-              </div>
-              
-              <div className="mb-6">
-                <label htmlFor="phone" className="block text-sm font-medium text-foreground/80 mb-2">Phone Number (Optional)</label>
-                <input 
-                  type="tel" 
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  disabled={status === 'sending'}
-                  className="w-full px-4 py-3 rounded-xl bg-background/50 border border-foreground/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-foreground/30 disabled:opacity-50"
-                  placeholder="+91 00000 00000"
-                />
-              </div>
-
-              <div className="mb-8">
-                <label htmlFor="message" className="block text-sm font-medium text-foreground/80 mb-2">Message</label>
-                <textarea 
-                  id="message"
-                  name="message"
-                  required
-                  rows="5"
-                  value={formData.message}
-                  onChange={handleChange}
-                  disabled={status === 'sending'}
-                  className="w-full px-4 py-3 rounded-xl bg-background/50 border border-foreground/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-foreground/30 resize-none disabled:opacity-50"
-                  placeholder="Tell us about your project..."
-                ></textarea>
-              </div>
-              
-              <button 
-                type="submit"
-                disabled={status === 'sending'}
-                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-primary text-white font-medium hover:bg-primary/90 transition-all shadow-[0_0_20px_rgba(79,70,229,0.4)] flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed"
+            {status === 'success' ? (
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="glass p-8 md:p-12 rounded-3xl flex flex-col items-center justify-center h-full min-h-[400px] text-center border border-green-500/20 bg-green-500/5"
               >
-                {status === 'sending' ? 'Sending...' : status === 'success' ? 'Message Sent!' : 'Send Message'}
-                {status !== 'sending' && status !== 'success' && <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}
-              </button>
-              
-              {status === 'error' && <p className="text-red-500 font-medium text-sm mt-4 text-center sm:text-left">Failed to send message. Please try again.</p>}
-            </form>
+                <div className="w-20 h-20 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mb-6">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <h3 className="text-3xl font-bold mb-4 text-green-500">Message Sent Successfully!</h3>
+                <p className="text-foreground/70 max-w-md mx-auto leading-relaxed">Thank you for reaching out. I've received your message and will get back to you directly at your email address as soon as possible.</p>
+                <button onClick={() => setStatus('idle')} className="mt-8 px-6 py-3 rounded-full glass hover:bg-foreground/5 transition-colors font-medium text-sm">
+                  Send Another Message
+                </button>
+              </motion.div>
+            ) : (
+              <form onSubmit={handleSubmit} className="glass p-8 md:p-12 rounded-3xl relative">
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-foreground/80 mb-2">Name</label>
+                    <input 
+                      type="text" 
+                      id="name"
+                      name="name"
+                      required
+                      value={formData.name}
+                      onChange={handleChange}
+                      disabled={status === 'sending'}
+                      className="w-full px-4 py-3 rounded-xl bg-background/50 border border-foreground/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-foreground/30 disabled:opacity-50"
+                      placeholder="John Doe"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-foreground/80 mb-2">Email</label>
+                    <input 
+                      type="email" 
+                      id="email"
+                      name="email"
+                      required
+                      value={formData.email}
+                      onChange={handleChange}
+                      disabled={status === 'sending'}
+                      className="w-full px-4 py-3 rounded-xl bg-background/50 border border-foreground/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-foreground/30 disabled:opacity-50"
+                      placeholder="john@example.com"
+                    />
+                  </div>
+                </div>
+                
+                <div className="mb-6">
+                  <label htmlFor="phone" className="block text-sm font-medium text-foreground/80 mb-2">Phone Number (Optional)</label>
+                  <input 
+                    type="tel" 
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    disabled={status === 'sending'}
+                    className="w-full px-4 py-3 rounded-xl bg-background/50 border border-foreground/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-foreground/30 disabled:opacity-50"
+                    placeholder="+91 00000 00000"
+                  />
+                </div>
+
+                <div className="mb-8">
+                  <label htmlFor="message" className="block text-sm font-medium text-foreground/80 mb-2">Message</label>
+                  <textarea 
+                    id="message"
+                    name="message"
+                    required
+                    rows="5"
+                    value={formData.message}
+                    onChange={handleChange}
+                    disabled={status === 'sending'}
+                    className="w-full px-4 py-3 rounded-xl bg-background/50 border border-foreground/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-foreground/30 resize-none disabled:opacity-50"
+                    placeholder="Tell us about your project..."
+                  ></textarea>
+                </div>
+                
+                <button 
+                  type="submit"
+                  disabled={status === 'sending'}
+                  className="w-full sm:w-auto px-8 py-4 rounded-xl bg-primary text-white font-medium hover:bg-primary/90 transition-all shadow-[0_0_20px_rgba(79,70,229,0.4)] flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed"
+                >
+                  {status === 'sending' ? 'Sending...' : 'Send Message'}
+                  {status !== 'sending' && <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}
+                </button>
+                
+                {status === 'error' && <p className="text-red-500 font-medium text-sm mt-4 text-center sm:text-left">Failed to send message. Please try again.</p>}
+              </form>
+            )}
           </motion.div>
         </div>
       </div>
