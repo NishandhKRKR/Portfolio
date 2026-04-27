@@ -38,7 +38,7 @@ const Navbar = () => {
       <div className="container mx-auto px-6 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
           <img src="/logo.png" alt="StackNova Technology" className="h-10 w-auto object-contain" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
-          <span className="text-xl md:text-2xl font-bold tracking-tighter hidden sm:block">
+          <span className="text-xl md:text-2xl font-bold tracking-tighter">
             StackNova<span className="text-primary"> Tech</span>
           </span>
         </Link>

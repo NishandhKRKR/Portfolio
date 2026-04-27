@@ -12,16 +12,18 @@ const MongoSvg = ({ size }) => <svg width={size} height={size} viewBox="0 0 24 2
 const MySqlSvg = ({ size }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor"><path d="M22.954 13.923c-.158.468-1.042.871-1.986 1.106-.115-1.859-1.328-3.328-2.617-3.666-.345-.09-1.282.029-1.959.029-.267 0-1.802-.07-2.02-.128-.809-.214-.239-.556-.239-.556s.216-.47-.197-.899c-.394-.411-.322-.962-.322-.962s.069-.74.37-.891c-.482-.821-2.036-.543-3.235-1.317-1.107-.714-3.18-.847-5.111-1.79-1.902-.929-2.868-2.228-3.791-3.411-.371-.476-1.571-1.192-1.838-1.3l.035-.113s.475-.246.732-.352zM2.87 3.518c.846.516 2.072.766 2.76.845.548.062-.03-.231.066-.353.473-.6 1.487-1.108 2.059-1.56.577-.457 4.542.446 4.314 1.111-.122.355-1.049.27-1.385.342-.718.152-1.366 1.256-1.366 1.256s-2.025 1.57-.468 2.656C9.176 8.03 11.2 7.747 11.2 7.747s-.35.539 0 .809c.47.362 1.493-1.018 2.508-.344 1.05.7 1.834.793 2.127 1.62-.276-1.166-.994-.374-1.229-.623-.53-.563-.382-.016-.838-.154-1.465-.443-.198 1.428.188 2.016.326.496.06.76.248.96-.067.873 1.171 1.705 2.146 1.623.238-.02.46-.07.46-.07s.767.142.149 1.13c-.352.564-1.012 1.09-1.536 1.455v.006c.012-.034.023-.069.034-.105.158-.468-.142-.8-.667-.743-.526.057-.156.417-.315.885-.159.467.575.405 1.1.348.526-.057.48.27-.087 1.954-1.109 3.292-3.13 6.002-3.13 6.002s1.393-2.613 2.619-5.91-.497-1.238-.497-1.238L15 15.688c-.918-.088-.868 2.946-1.921 5.92-.099.279.79-1.385.952-1.854.71-2.036-.34-2.222-.34-2.222l1.622-4.004c-.328-.152-.073.491-.321 1.223-.284.846-1.195 1.551-2.035 1.87-.838.318-1.503-.131-1.503-.131s.145 1.688-2.607.039c.083.562-1.3-.122-1.3-.122s.67 1.258-2.31-2.316c-.234-.339-.516-.764-.78-1.157-1.91 3.528-6.177 4.195-6.177 4.195s5.044-.22 7.078-4.707c-2.484-1.114-1.562-3.123-1.562-3.123s.723 1.342 2.378 1.953l1.102-2.368s-2.073.08-1.748-1.296l1.248-2.37c-1.468-.168-1.378-1.371-1.378-1.371s.752.68 1.914.536l.278-1.84c-1.411-.532-.2-2.18-.2-2.18s-1.83.69-.971-1.23C5.975 6.321 4.7 6.136 4.7 6.136s.2 1.353-.615 1.776-1.171 1.053-1.439.462"/></svg>;
 const ExpressSvg = ({ size }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor"><text x="0" y="16" fontFamily="Arial, Helvetica, sans-serif" fontWeight="bold" fontSize="11" letterSpacing="-0.5">ex</text><text x="14" y="16" fontFamily="Arial, Helvetica, sans-serif" fontSize="11">press</text></svg>;
 
+
+
 const techStack = [
   { name: 'HTML5', icon: <HtmlIcon size={50} />, brandColor: '#E34F26' },
-  { name: 'CSS3', icon: <img src="/css.png" alt="CSS3" className="w-[50px] h-[50px] object-contain" onError={(e) => e.currentTarget.style.display = 'none'} />, brandColor: '#1572B6' },
-  { name: 'JavaScript', icon: <img src="/js.png" alt="JavaScript" className="w-[50px] h-[50px] object-contain" onError={(e) => e.currentTarget.style.display = 'none'} />, brandColor: '#F7DF1E' },
+  { name: 'CSS3', icon: <CssIcon size={50} />, brandColor: '#1572B6' },
+  { name: 'JavaScript', icon: <svg width={50} height={50} viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>, brandColor: '#F7DF1E' },
   { name: 'React.js', icon: <ReactSvg size={50} />, brandColor: '#61DAFB' },
   { name: 'Tailwind CSS', icon: <TailwindSvg size={50} />, brandColor: '#06B6D4' },
   { name: 'Node.js', icon: <NodeSvg size={50} />, brandColor: '#339933' },
-  { name: 'Express.js', icon: <img src="/express.png" alt="Express" className="w-[50px] h-[50px] object-contain bg-white/20 p-1 rounded-lg" onError={(e) => e.currentTarget.style.display = 'none'} />, brandColor: '#FFFFFF' },
+  { name: 'Express.js', icon: <ExpressSvg size={50} />, brandColor: '#FFFFFF' },
   { name: 'MongoDB', icon: <MongoSvg size={50} />, brandColor: '#47A248' },
-  { name: 'MySQL', icon: <img src="/mysql.png" alt="MySQL" className="w-[50px] h-[50px] object-contain" onError={(e) => e.currentTarget.style.display = 'none'} />, brandColor: '#4479A1' },
+  { name: 'MySQL', icon: <MySqlSvg size={50} />, brandColor: '#4479A1' },
 ];
 
 const containerVariants = {

@@ -63,7 +63,7 @@ const About = () => {
                 </div>
                 <div>
                   <span className="block text-sm text-foreground/50">Experience</span>
-                  <span className="font-medium">3+ Years</span>
+                  <span className="font-medium">1+ Years</span>
                 </div>
               </div>
               <div className="flex items-center gap-4 text-foreground/80">
