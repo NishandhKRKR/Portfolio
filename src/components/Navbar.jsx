@@ -11,11 +11,11 @@ const Navbar = () => {
   const location = useLocation();
 
   const navLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'Projects', href: '/projects' },
-    { name: 'Services', href: '/services' },
-    { name: 'Tech', href: '/tech' },
-    { name: 'About', href: '/about' },
+    { name: 'Home', href: '#home' },
+    { name: 'Projects', href: '#projects' },
+    { name: 'Services', href: '#services' },
+    { name: 'Tech', href: '#tech' },
+    { name: 'About', href: '#about' },
   ];
 
   useEffect(() => {
@@ -38,27 +38,27 @@ const Navbar = () => {
         >
           <div className="flex items-center gap-6 lg:gap-12">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-2 group">
+            <a href="#home" className="flex items-center gap-2 group">
               <span className="text-xl font-bold tracking-tighter group-hover:text-primary transition-colors">
                 StackNova<span className="text-primary group-hover:text-foreground transition-colors">.</span>
               </span>
-            </Link>
+            </a>
 
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center">
               <ul className="flex items-center gap-2">
                 {navLinks.map((link) => {
-                  const isActive = location.pathname === link.href;
+                  const isActive = location.hash === link.href || (location.hash === '' && link.href === '#home');
                   return (
                     <li key={link.name} className="relative">
-                      <Link
-                        to={link.href}
+                      <a
+                        href={link.href}
                         className={`relative z-10 px-4 py-2 text-sm font-medium transition-colors ${
                           isActive ? 'text-primary' : 'text-foreground/80 hover:text-foreground'
                         }`}
                       >
                         {link.name}
-                      </Link>
+                      </a>
                       {isActive && (
                         <motion.div
                           layoutId="nav-pill"
@@ -82,12 +82,12 @@ const Navbar = () => {
                 {isDark ? <Sun size={18} /> : <Moon size={18} />}
               </button>
               
-              <Link
-                to="/contact"
+              <a
+                href="#contact"
                 className="hidden sm:flex px-5 py-2 rounded-full bg-foreground text-background text-sm font-semibold hover:scale-105 transition-transform items-center gap-2"
               >
                 Let's Talk
-              </Link>
+              </a>
 
               {/* Mobile Toggle */}
               <button
@@ -115,27 +115,27 @@ const Navbar = () => {
               <ul className="flex flex-col gap-2">
                 {navLinks.map((link) => (
                   <li key={link.name}>
-                    <Link
-                      to={link.href}
+                    <a
+                      href={link.href}
                       onClick={() => setIsMobileMenuOpen(false)}
                       className={`block px-4 py-3 rounded-xl text-lg font-medium transition-colors ${
-                        location.pathname === link.href 
+                        (location.hash === link.href || (location.hash === '' && link.href === '#home'))
                           ? 'bg-primary/10 text-primary' 
                           : 'hover:bg-foreground/5'
                       }`}
                     >
                       {link.name}
-                    </Link>
+                    </a>
                   </li>
                 ))}
                 <li className="pt-4 mt-2 border-t border-foreground/10">
-                  <Link
-                    to="/contact"
+                  <a
+                    href="#contact"
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="flex justify-center w-full px-6 py-4 rounded-xl bg-foreground text-background text-lg font-semibold"
                   >
                     Start a Project
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </div>

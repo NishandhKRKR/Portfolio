@@ -1,14 +1,20 @@
 import Hero from '../components/Hero';
-import Testimonials from '../components/Testimonials';
+import About from '../components/About';
+import Services from '../components/Services';
+import Projects from '../components/Projects';
+import TechStack from '../components/TechStack';
+import Contact from '../components/Contact';
 import PageTransition from '../components/PageTransition';
 
 const Home = () => {
   return (
     <PageTransition>
       <Hero />
-      <div className="pb-24">
-        <Testimonials />
-      </div>
+      <About />
+      <Services />
+      <Projects />
+      <TechStack />
+      <Contact />
     </PageTransition>
   );
 };

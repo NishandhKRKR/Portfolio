@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import HeroBackground from './HeroBackground';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import Parallax from './Parallax';
 
 const Hero = () => {
   const containerVariants = {
@@ -24,7 +25,7 @@ const Hero = () => {
     <section id="home" className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
       <HeroBackground />
       
-      <div className="container mx-auto px-6 relative z-10">
+      <Parallax offset={80} className="container mx-auto px-6 relative z-10 w-full">
         <div className="flex flex-col items-center justify-center w-full max-w-5xl mx-auto">
           
           <motion.div 
@@ -80,7 +81,7 @@ const Hero = () => {
           </motion.div>
           
         </div>
-      </div>
+      </Parallax>
       
       <motion.div 
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-foreground/40 hidden md:flex"

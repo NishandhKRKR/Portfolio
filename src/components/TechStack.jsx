@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import Parallax from './Parallax';
 
 // SVG Icons
 const HtmlIcon = ({ size }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.212-2.776H6.084l.321 5.372L12 19.998l5.592-1.559.818-8.689H8.531z"/></svg>;
@@ -42,8 +43,8 @@ const itemVariants = {
 
 const TechStack = () => {
   return (
-    <section className="py-20 relative overflow-hidden bg-foreground/5">
-      <div className="container mx-auto px-6">
+    <section id="tech" className="py-20 relative overflow-hidden bg-foreground/5">
+      <Parallax offset={40} className="container mx-auto px-6 relative z-10">
         <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -84,7 +85,7 @@ const TechStack = () => {
             </motion.div>
           ))}
         </motion.div>
-      </div>
+      </Parallax>
     </section>
   );
 };

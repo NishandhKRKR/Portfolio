@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Send, Mail, MapPin } from 'lucide-react';
+import Parallax from './Parallax';
 
 const GithubIcon = ({ size }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.24c3-.34 6-1.53 6-6.76a5.2 5.2 0 0 0-1.39-3.7 4.9 4.9 0 0 0-.13-3.65s-1.12-.36-3.67 1.36a12.7 12.7 0 0 0-6.6 0C5.12 2.36 4 2.7 4 2.7a4.9 4.9 0 0 0-.13 3.65A5.2 5.2 0 0 0 2.5 10c0 5.22 3 6.42 6 6.76a4.8 4.8 0 0 0-1 3.24v4"></path></svg>;
 const LinkedinIcon = ({ size }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>;
@@ -13,7 +14,7 @@ const Contact = () => {
     phone: '',
     message: ''
   });
-  const [status, setStatus] = useState('idle'); // idle, sending, success, error
+  const [status, setStatus] = useState('idle');
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -55,8 +56,8 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 relative bg-foreground/5">
-      <div className="container mx-auto px-6 relative z-10">
+    <section id="contact" className="py-24 relative bg-foreground/5 overflow-hidden">
+      <Parallax offset={50} className="container mx-auto px-6 relative z-10">
         <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -173,7 +174,7 @@ const Contact = () => {
                       onChange={handleChange}
                       disabled={status === 'sending'}
                       className="w-full px-4 py-3 rounded-xl bg-background/50 border border-foreground/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-foreground/30 disabled:opacity-50"
-                      placeholder="John Doe"
+                      placeholder="Enter Your Name"
                     />
                   </div>
                   <div>
@@ -187,7 +188,7 @@ const Contact = () => {
                       onChange={handleChange}
                       disabled={status === 'sending'}
                       className="w-full px-4 py-3 rounded-xl bg-background/50 border border-foreground/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-foreground/30 disabled:opacity-50"
-                      placeholder="john@example.com"
+                      placeholder="Enter E-mail"
                     />
                   </div>
                 </div>
@@ -235,7 +236,7 @@ const Contact = () => {
             )}
           </motion.div>
         </div>
-      </div>
+      </Parallax>
     </section>
   );
 };

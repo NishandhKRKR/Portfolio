@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Layout, Globe, Code2, Users, ShoppingCart } from 'lucide-react';
+import Parallax from './Parallax';
 
 const services = [
   {
@@ -31,8 +32,8 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="services" className="py-24 relative">
-      <div className="container mx-auto px-6 relative z-10">
+    <section id="services" className="py-24 relative overflow-hidden">
+      <Parallax offset={30} className="container mx-auto px-6 relative z-10">
         <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -73,7 +74,7 @@ const Services = () => {
             </motion.div>
           ))}
         </div>
-      </div>
+      </Parallax>
     </section>
   );
 };
