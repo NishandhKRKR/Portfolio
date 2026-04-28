@@ -17,7 +17,10 @@ function App() {
   const location = useLocation();
 
   return (
-    <div className="min-h-screen flex flex-col font-sans selection:bg-primary/30 selection:text-primary">
+    <div className="min-h-screen flex flex-col font-sans selection:bg-primary/30 selection:text-primary relative">
+      {/* Global Noise Texture Overlay */}
+      <div className="fixed inset-0 z-[-1] bg-noise pointer-events-none"></div>
+      
       <CustomCursor />
       <Navbar />
       <main className="flex-1">

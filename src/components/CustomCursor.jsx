@@ -45,33 +45,38 @@ const CustomCursor = () => {
       x: mousePosition.x - 16,
       y: mousePosition.y - 16,
       scale: 1,
+      opacity: 1
     },
     hover: {
       x: mousePosition.x - 16,
       y: mousePosition.y - 16,
-      scale: 1.5,
-      backgroundColor: "rgba(99, 102, 241, 0.2)",
-      border: "1px solid rgba(99, 102, 241, 0.5)",
+      scale: 1.8,
+      backgroundColor: "var(--foreground)",
+      opacity: 0.2,
+      border: "none",
     }
   };
 
   return (
-    <>
+    <div className="pointer-events-none z-[9999] hidden md:block">
+      {/* Outer Ring */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border-2 border-primary/50 pointer-events-none z-[100] mix-blend-difference hidden md:block"
+        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-foreground/30 mix-blend-difference"
         variants={variants}
         animate={isHovering ? "hover" : "default"}
-        transition={{ type: "spring", stiffness: 500, damping: 28, mass: 0.5 }}
+        transition={{ type: "spring", stiffness: 400, damping: 28, mass: 0.5 }}
       />
+      {/* Inner Dot */}
       <motion.div 
-        className="fixed top-0 left-0 w-2 h-2 bg-primary rounded-full pointer-events-none z-[100] hidden md:block"
+        className="fixed top-0 left-0 w-1.5 h-1.5 bg-foreground rounded-full mix-blend-difference"
         animate={{
-          x: mousePosition.x - 4,
-          y: mousePosition.y - 4,
+          x: mousePosition.x - 3,
+          y: mousePosition.y - 3,
+          scale: isHovering ? 0 : 1
         }}
-        transition={{ type: "spring", stiffness: 1000, damping: 40, mass: 0.1 }}
+        transition={{ type: "spring", stiffness: 800, damping: 40, mass: 0.1 }}
       />
-    </>
+    </div>
   );
 };
 
