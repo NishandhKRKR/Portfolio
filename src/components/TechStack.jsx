@@ -76,6 +76,12 @@ const TechStack = () => {
                 color: tech.brandColor,
                 boxShadow: `0 0 25px ${tech.brandColor}66`
               }}
+              whileTap={{
+                y: -5,
+                scale: 1.05,
+                color: tech.brandColor,
+                boxShadow: `0 0 20px ${tech.brandColor}66`
+              }}
               className="flex flex-col items-center justify-center p-6 rounded-2xl glass transition-all w-32 h-32 md:w-40 md:h-40 group text-foreground/80 cursor-pointer"
             >
               <div className="mb-4 transition-colors duration-300 drop-shadow-xl" style={{ color: "inherit" }}>
