@@ -70,24 +70,26 @@ const TechStack = () => {
             <motion.div 
               key={index}
               variants={itemVariants}
+              tabIndex={0}
               whileHover={{ 
                 y: -10, 
                 scale: 1.1,
                 color: tech.brandColor,
                 boxShadow: `0 0 25px ${tech.brandColor}66`
               }}
-              whileTap={{
-                y: -5,
-                scale: 1.05,
+              whileFocus={{ 
+                y: -10, 
+                scale: 1.1,
                 color: tech.brandColor,
-                boxShadow: `0 0 20px ${tech.brandColor}66`
+                boxShadow: `0 0 25px ${tech.brandColor}66`
               }}
-              className="flex flex-col items-center justify-center p-6 rounded-2xl glass transition-all w-32 h-32 md:w-40 md:h-40 group text-foreground/80 cursor-pointer"
+              whileTap={{ scale: 0.95 }}
+              className="flex flex-col items-center justify-center p-6 rounded-2xl glass transition-all w-32 h-32 md:w-40 md:h-40 group text-foreground/80 cursor-pointer outline-none focus:outline-none"
             >
               <div className="mb-4 transition-colors duration-300 drop-shadow-xl" style={{ color: "inherit" }}>
                 {tech.icon}
               </div>
-              <span className="font-bold text-sm md:text-base opacity-70 group-hover:opacity-100 transition-opacity" style={{ color: "inherit" }}>{tech.name}</span>
+              <span className="font-bold text-sm md:text-base opacity-70 group-hover:opacity-100 group-focus:opacity-100 transition-opacity" style={{ color: "inherit" }}>{tech.name}</span>
             </motion.div>
           ))}
         </motion.div>
